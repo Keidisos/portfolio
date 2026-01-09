@@ -1,0 +1,556 @@
+/* public/assets/css/style.css */
+
+:root {
+    /* --- PALETTE CYBER-SECURITY --- */
+    --bg-deep: #0B0C10;       /* Fond principal */
+    --bg-card: #1F2833;       /* Fond secondaire (cartes) */
+    --accent-cyan: #66FCF1;   /* Actions principales (primaire) */
+    --accent-dim: #45A29E;    /* Bordures, éléments secondaires */
+    --text-main: #C5C6C7;     /* Texte principal */
+    --text-muted: #8892b0;    /* Texte secondaire */
+    
+    /* --- FONTS --- */
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-code: 'JetBrains Mono', monospace;
+}
+
+/* Reset basique */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden; /* Empêche le scroll horizontal accidentel */
+}
+
+/* Classes utilitaires rapides pour tester */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: #fff;
+}
+
+.text-accent {
+    color: var(--accent-cyan);
+}
+
+/* --- 2. NAVIGATION (HUD) --- */
+
+.navbar {
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    z-index: 1000;
+    background: rgba(11, 12, 16, 0.85); /* Fond semi-transparent */
+    backdrop-filter: blur(10px);        /* Effet verre flouté */
+    border-bottom: 1px solid rgba(102, 252, 241, 0.1);
+}
+
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+/* Logo */
+.logo {
+    font-family: var(--font-code);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: var(--text-main);
+}
+.logo .prompt { color: var(--accent-cyan); }
+.logo .tilde { color: var(--accent-dim); }
+.logo .cursor { animation: blink 1s infinite; }
+
+/* Menu */
+.nav-links { display: flex; gap: 30px; align-items: center; }
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+.nav-link .hash { color: var(--accent-dim); margin-right: 5px; opacity: 0.5; }
+
+.nav-link:hover {
+    color: var(--accent-cyan);
+    text-shadow: 0 0 8px rgba(102, 252, 241, 0.4); /* Glow effect */
+}
+
+/* --- 3. HERO SECTION --- */
+
+.hero-section {
+    padding-top: 140px; /* Espace pour la navbar */
+    padding-bottom: 80px;
+    min-height: 90vh; /* Prend presque tout l'écran */
+    display: flex;
+    align-items: center;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 colonnes égales */
+    gap: 60px;
+    align-items: center;
+}
+
+/* Badge Status */
+.badge-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    background: rgba(102, 252, 241, 0.05);
+    border: 1px solid rgba(102, 252, 241, 0.2);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--accent-cyan);
+    margin-bottom: 20px;
+}
+.status-dot {
+    width: 8px; height: 8px;
+    background-color: #00E676;
+    border-radius: 50%;
+    margin-right: 8px;
+    box-shadow: 0 0 5px #00E676;
+}
+
+/* Textes */
+.hero-surtitle { font-size: 1.5rem; color: var(--text-muted); font-weight: 300; }
+h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; color: #fff; }
+.hero-subtitle { font-size: 1.5rem; font-weight: 400; color: var(--text-muted); margin-bottom: 20px; }
+.hero-desc { font-size: 1.1rem; color: var(--text-muted); max-width: 500px; margin-bottom: 40px; }
+strong { color: #fff; }
+
+/* Boutons */
+.hero-actions { display: flex; gap: 20px; }
+
+.btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 28px;
+    font-family: var(--font-code);
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+.btn-sm { padding: 8px 16px; font-size: 0.85rem; background: transparent; border: 1px solid var(--accent-dim); color: var(--text-main); }
+.btn-sm:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
+
+.btn-primary {
+    background-color: transparent;
+    border: 1px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+    box-shadow: 0 0 10px rgba(102, 252, 241, 0.1);
+}
+.btn-primary:hover {
+    background-color: rgba(102, 252, 241, 0.1);
+    box-shadow: 0 0 20px rgba(102, 252, 241, 0.3);
+    transform: translateY(-2px);
+}
+.btn-outline { border: 1px solid var(--text-muted); color: var(--text-muted); }
+.btn-outline:hover { border-color: #fff; color: #fff; }
+
+/* Visual Code Card 3D */
+.cyber-card {
+    background: #171a21;
+    border-radius: 8px;
+    border: 1px solid #2c313c;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
+    transition: transform 0.5s ease;
+}
+.cyber-card:hover { transform: perspective(1000px) rotateY(0deg) rotateX(0deg); }
+
+.card-header { background: #1e222a; padding: 10px 15px; display: flex; gap: 8px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #039C00; }
+
+.card-body { padding: 25px; font-size: 0.9rem; line-height: 1.6; }
+.code-font { font-family: var(--font-code); color: #abb2bf; }
+.purple { color: #c678dd; }
+.cyan { color: #56b6c2; }
+.comment { color: #5c6370; font-style: italic; }
+.indent { margin-left: 20px; }
+
+/* Animations */
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.cursor-blink { animation: blink 1s infinite; }
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+    .hero-grid { grid-template-columns: 1fr; text-align: center; }
+    .hero-desc { margin: 0 auto 40px auto; }
+    .hero-actions { justify-content: center; }
+    .hero-visual { display: none; /* On cache le code sur mobile pour l'instant */ }
+}
+
+/* --- 4. SECTION SKILLS --- */
+
+.section-padding {
+    padding: 100px 0;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 50px;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px; left: 0;
+    width: 60px; height: 3px;
+    background: var(--accent-cyan);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Grille auto-responsive */
+    gap: 30px;
+}
+
+.skill-card {
+    background: rgba(31, 40, 51, 0.4); /* Très léger */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 8px;
+    transition: 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet Hover "Scan" */
+.skill-card:hover {
+    transform: translateY(-5px);
+    background: rgba(31, 40, 51, 0.8);
+    border-color: rgba(102, 252, 241, 0.3);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.skill-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding-bottom: 15px;
+}
+
+.skill-header i {
+    font-size: 1.8rem;
+}
+
+.skill-header h3 {
+    font-size: 1.2rem;
+    font-family: var(--font-heading);
+    color: #fff;
+}
+
+.skill-list {
+    list-style: none;
+}
+
+.skill-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.bullet {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 5px currentColor; /* Le point brille de la couleur de la catégorie */
+}
+
+/* --- 5. SECTION PROJETS --- */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.project-card {
+    background-color: var(--bg-card);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-dim);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Image & Overlay */
+.project-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Zoom léger sur l'image au survol */
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+
+.project-content {
+    padding: 25px;
+    flex-grow: 1; /* Pour que les cartes aient la même hauteur */
+    display: flex;
+    flex-direction: column;
+}
+
+.project-type {
+    font-size: 0.8rem;
+    color: var(--accent-cyan);
+    font-family: var(--font-code);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.project-content h3 {
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.project-content p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+/* Badges Techno */
+.project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.stack-badge {
+    background: rgba(255,255,255,0.05);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-family: var(--font-code);
+    color: var(--text-main);
+    border: 1px solid transparent;
+}
+
+.project-card:hover .stack-badge {
+    border-color: var(--accent-dim);
+}
+
+/* Liens en bas de carte */
+.project-links {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 15px;
+    display: flex;
+    gap: 20px;
+}
+
+.link-item {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: 0.2s;
+}
+
+.link-item:hover {
+    color: var(--accent-cyan);
+}
+
+/* --- 6. SECTION CONTACT --- */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.big-btn {
+    padding: 15px 35px;
+    font-size: 1.1rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icon {
+    font-size: 1.8rem;
+    color: var(--text-muted);
+    transition: 0.3s;
+}
+
+.social-icon:hover {
+    color: var(--accent-cyan);
+    transform: translateY(-3px);
+}
+
+/* PGP Block Style */
+.pgp-block {
+    background: #000;
+    border: 1px solid #333;
+    border-radius: 6px;
+    font-family: var(--font-code);
+    overflow: hidden;
+}
+
+.terminal-header {
+    background: #1a1a1a;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.terminal-header .title { margin-left: auto; font-size: 0.8rem; color: #666; }
+
+.terminal-body {
+    padding: 20px;
+    position: relative;
+}
+
+.pgp-key {
+    color: #4CAF50; /* Vert terminal vieux style */
+    font-size: 0.75rem;
+    opacity: 0.7;
+    word-break: break-all;
+    line-height: 1.4;
+}
+
+.copy-btn {
+    position: absolute;
+    bottom: 20px; right: 20px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: var(--font-code);
+    font-size: 0.8rem;
+    border-radius: 4px;
+}
+.copy-btn:hover { background: rgba(255,255,255,0.2); }
+
+/* Mobile Contact */
+@media (max-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .pgp-block { display: none; /* Trop petit sur mobile */ }
+}
+
+/* --- 7. RESPONSIVE NAVBAR (MOBILE) --- */
+
+/* Par défaut (Desktop) : on cache le burger */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: var(--text-main);
+}
+
+/* Écran Mobile (moins de 768px) */
+@media (max-width: 768px) {
+    /* On affiche le burger */
+    .hamburger {
+        display: block;
+        z-index: 1001; /* Au-dessus du menu */
+    }
+
+    /* Animation du Burger en croix quand actif */
+    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); background-color: var(--accent-cyan); }
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); background-color: var(--accent-cyan); }
+
+    /* Le Menu Mobile */
+    .nav-links {
+        position: fixed;
+        left: -100%; /* Caché à gauche */
+        top: 70px; /* Juste en dessous de la barre fixe */
+        gap: 0;
+        flex-direction: column;
+        background-color: rgba(11, 12, 16, 0.98); /* Fond presque opaque */
+        backdrop-filter: blur(15px);
+        width: 100%;
+        height: calc(100vh - 70px); /* Toute la hauteur restante */
+        text-align: center;
+        transition: 0.3s ease-in-out;
+        padding-top: 40px;
+        border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* Quand le menu est ouvert */
+    .nav-links.active {
+        left: 0; /* On le ramène à l'écran */
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+        margin: 20px 0;
+        display: block;
+    }
+    
+    .nav-link:hover {
+        color: var(--accent-cyan);
+    }
+
+    /* Ajustement du bouton contact dans le menu */
+    .nav-links .btn-sm {
+        margin-top: 20px;
+        display: inline-block;
+    }
+}
