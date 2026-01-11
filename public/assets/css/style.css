@@ -554,3 +554,67 @@ strong { color: #fff; }
         display: inline-block;
     }
 }
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0B0C10; /* Ton fond très sombre */
+    z-index: 9999; /* Au-dessus de tout */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+/* Cache le loader quand on ajoute cette classe via JS */
+#preloader.loaded {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.terminal-loader {
+    width: 300px;
+    font-family: 'JetBrains Mono', monospace; /* Ta police code */
+    text-align: left;
+}
+
+.terminal-loader .text {
+    color: #C5C6C7;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.progress-container {
+    width: 100%;
+    height: 4px;
+    background-color: #1F2833;
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #66FCF1; /* Ton Cyan */
+    width: 0%; /* Départ à 0 */
+    box-shadow: 0 0 10px rgba(102, 252, 241, 0.7);
+    transition: width 0.2s ease; /* Fluidité de la barre */
+}
+
+.terminal-loader .status {
+    color: #45A29E;
+    font-size: 0.75rem;
+}
+
+/* Petit curseur clignotant à la fin du texte */
+.terminal-loader .text::after {
+    content: '_';
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}

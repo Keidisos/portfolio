@@ -52,4 +52,55 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.classList.remove("active");
         navMenu.classList.remove("active");
     }));
+
+    // 5. SYSTEM BOOT LOADER
+    const preloader = document.getElementById('preloader');
+    const progressBar = document.getElementById('progress-bar');
+    const loadingText = document.getElementById('loading-text');
+    
+    // Liste des "faux" modules à charger pour l'effet style
+    const modules = ['kernel', 'network_d', 'security_patch', 'graphics_ui', 'user_data', 'DONE'];
+    let progress = 0;
+    let moduleIndex = 0;
+
+    // Fonction qui fait avancer la barre artificiellement
+    // pour donner l'impression que ça travaille
+    const interval = setInterval(() => {
+        // On avance un peu aléatoirement
+        progress += Math.random() * 15; 
+        
+        // On change le texte du module chargé
+        if(progress > (moduleIndex + 1) * (100 / modules.length)) {
+            if(moduleIndex < modules.length - 1) {
+                moduleIndex++;
+                loadingText.innerText = modules[moduleIndex];
+            }
+        }
+
+        // On borne à 90% tant que la page n'est pas "vraiment" chargée
+        if (progress > 95) progress = 95;
+        
+        progressBar.style.width = progress + '%';
+
+    }, 100); // Toutes les 100ms
+
+    // L'événement "load" signifie que TOUT (images, css) est chargé
+    window.addEventListener('load', () => {
+        clearInterval(interval); // On arrête la simulation
+        
+        // On complète la barre à 100%
+        progressBar.style.width = '100%';
+        loadingText.innerText = 'READY';
+
+        // Petit délai de 500ms pour laisser l'utilisateur voir le "100%"
+        setTimeout(() => {
+            preloader.classList.add('loaded'); // Le CSS fait le fade-out
+            
+            // On supprime l'élément du DOM pour libérer la mémoire
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        }, 500);
+    });
+
 });

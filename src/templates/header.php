@@ -18,6 +18,17 @@
 </head>
 <body>
     
+
+    <div id="preloader">
+        <div class="terminal-loader">
+            <div class="text">System_Boot_Sequence...</div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="status">Loading modules: <span id="loading-text">core</span></div>
+        </div>
+    </div>
+
     <header class="navbar">
         <div class="container navbar-content">
             <a href="/" class="logo">
