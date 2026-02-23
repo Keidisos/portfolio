@@ -30,8 +30,8 @@ require_once PROJECT_ROOT . '/src/templates/header.php';
                 <a href="#projects" class="btn btn-primary">
                     <i class="ri-terminal-box-line"></i> Voir mes projets
                 </a>
-                <a href="/assets/docs/CV_HIRSCH.pdf" class="btn btn-outline">
-                    <i class="ri-download-line"></i> CV (PDF)
+                <a href="https://keidisos.github.io/resume/" class="btn btn-outline">
+                    <i class="ri-download-line"></i> CV
                 </a>
             </div>
         </div>
