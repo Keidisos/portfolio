@@ -3,27 +3,23 @@
 
 $skills = [
     [
-        "category" => "Offensive Security",
-        "icon" => "ri-bug-fill", // Icone Bug
-        "color" => "var(--accent-cyan)", // Cyan
-        "items" => ["Pentesting Web", "Network Scanning (Nmap)", "Burp Suite", "Metasploit", "Python Scripting"]
+        "category" => "Défense & gestion d'incident",
+        "icon" => "ri-shield-check-line",
+        "items" => ["Qualification d'incidents (SOC / CERT)", "Exercices de crise cyber", "Analyse de logs", "SIEM (Wazuh)", "CrowdSec", "Hardening Linux"]
     ],
     [
-        "category" => "Defensive & Blue Team",
-        "icon" => "ri-shield-check-fill", // Icone Bouclier
-        "color" => "var(--accent-cyan)", // Cyan
-        "items" => ["SIEM (Wazuh)", "Analyses de logs", "Hardening Linux", "Firewalling (Stormshield/PfSense)", "Incident Response"]
+        "category" => "Gouvernance & conformité",
+        "icon" => "ri-scales-3-line",
+        "items" => ["ISO 27001", "Analyse de risques", "Audit de conformité", "PSSI", "RGPD", "Sensibilisation"]
     ],
     [
-        "category" => "Infra & Dev",
-        "icon" => "ri-server-line", // Icone Serveur
-        "color" => "var(--accent-cyan)", // Cyan
-        "items" => ["Docker", "Proxmox / LXC", "Routing", "TCP / IP", "Python", "Bash" ]
+        "category" => "Systèmes & réseaux",
+        "icon" => "ri-server-line",
+        "items" => ["Windows Server / AD", "Linux", "Proxmox VE / LXC", "Docker", "Switching Cisco / Alcatel", "Routage", "pfSense / Stormshield", "Tickets GTI / GTR"]
     ],
     [
-        "category" => "Conformité",
-        "icon" => "ri-server-line", // Icone Serveur
-        "color" => "var(--accent-cyan)", // Cyan
-        "items" => ["RGPD", "PSSI", "LPM", "ISO 27001"]
+        "category" => "Offensif & outils",
+        "icon" => "ri-bug-line",
+        "items" => ["Pentest web & OSINT", "Forensic", "Nmap", "Burp Suite", "Metasploit", "Python", "Bash"]
     ],
 ];

@@ -1,23 +1,49 @@
 <?php
+// src/data/projects.php — le Home Lab a sa propre section (src/data/homelab.php)
+
 $projects = [
     [
         "title" => "Secure Infrastructure",
-        "type" => "Blue Team / Infra",
-        "desc" => "Conception et sécurisation d'une infrastructure complète (Firewalls Stormshield, VPN, IDS, SSO) avec supervision active. Validation de la robustesse par audits offensifs (attaques Wi-Fi, MitM, vulnérabilités) et implémentation de contre-mesures.",
+        "type" => "Blue Team · Infrastructure",
+        "desc" => "Conception et sécurisation d'une infrastructure complète (pare-feux Stormshield, VPN, IDS, SSO) avec supervision active. Robustesse validée par des audits offensifs (attaques Wi-Fi, MitM, vulnérabilités) puis contre-mesures implémentées.",
         "stack" => ["Firewalling", "Blue Team", "SSO", "Active Directory"],
-        "documentation1" => "assets/docs/secure_infra.pdf",
-	"documentation2" => null,
-        "demo" => null,
-        "image" => "assets/img/cyber-security-infrastructure.png"
+        "links" => [
+            ["label" => "Dossier technique", "href" => "assets/docs/secure_infra.pdf", "icon" => "ri-file-pdf-2-line"],
+        ],
+        // Illustration : une arborescence du projet, comme pour le Home Lab
+        "terminal" => [
+            "title" => "mateo@secure-infra: ~",
+            "cmd" => "tree -d secure-infra/",
+            "root" => "secure-infra/",
+            "lines" => [
+                ["name" => "firewall/", "tone" => "accent", "desc" => "Stormshield, filtrage inter-zones"],
+                ["name" => "vpn/", "tone" => "info", "desc" => "accès distant chiffré"],
+                ["name" => "ids/", "tone" => "alert", "desc" => "détection d'intrusion"],
+                ["name" => "sso/", "tone" => "ok", "desc" => "Active Directory, authentification unique"],
+                ["name" => "audit/", "tone" => "warn", "desc" => "Wi-Fi, MitM, contre-mesures"],
+            ],
+        ],
     ],
     [
-        "title" => "VulnScanner Automator",
-        "type" => "Offensive Security",
-        "desc" => "Outil d'automatisation de pentest. Orchestration de divers outils de scan via un script Python, avec génération automatique de rapport PDF pour l'audit.",
-        "stack" => ["Python 3", "Nmap", "XSStrike", "Fuzzing", "SQL Map", "Nikto"],
-	"documentation1" => "assets/docs/insp3ct_doc_user.pdf",
-	"documentation2" => "assets/docs/insp3ct_doc_tech.pdf",
-        "demo" => null,
-        "image" => "assets/img/vuln-scanning.png"
+        "title" => "Insp3ct — VulnScanner",
+        "type" => "Sécurité offensive · Outil",
+        "desc" => "Outil d'automatisation de pentest : orchestration de plusieurs scanners depuis un script Python et génération automatique d'un rapport d'audit en PDF.",
+        "stack" => ["Python 3", "Nmap", "XSStrike", "SQLMap", "Nikto", "Fuzzing"],
+        "links" => [
+            ["label" => "Guide utilisateur", "href" => "assets/docs/insp3ct_doc_user.pdf", "icon" => "ri-file-pdf-2-line"],
+            ["label" => "Doc technique", "href" => "assets/docs/insp3ct_doc_tech.pdf", "icon" => "ri-file-pdf-2-line"],
+        ],
+        // Illustration : le déroulé d'un scan
+        "terminal" => [
+            "title" => "mateo@insp3ct: ~",
+            "cmd" => "python3 insp3ct.py --cible exemple.fr",
+            "steps" => [
+                ["tag" => "nmap", "text" => "ports et services"],
+                ["tag" => "nikto", "text" => "configuration du serveur web"],
+                ["tag" => "xsstrike", "text" => "injections XSS"],
+                ["tag" => "sqlmap", "text" => "injections SQL"],
+                ["tag" => "rapport", "text" => "audit.pdf généré", "ok" => true],
+            ],
+        ],
     ]
 ];
